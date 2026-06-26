@@ -54,7 +54,7 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: '.auth/user.json',  // ← reuse saved session
+        //storageState: '.auth/user.json',  // ← reuse saved session
       },
       dependencies: ['setup'],  // ← always run setup first
     },
