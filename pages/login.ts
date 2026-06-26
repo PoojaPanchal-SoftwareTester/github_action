@@ -33,9 +33,14 @@ export class LoginPage{
     async loginForm(email:string,pass:string) 
     {
         try{
-           await this.homeLoginBtn.waitFor({ state: 'visible', timeout: 15000 });
-       //await this.homeLoginBtn.click();
-       await this.emailInput.click();
+     await this.homeLoginBtn.waitFor({ state: 'visible' });
+    await this.homeLoginBtn.click();
+
+      await this.emailInput.waitFor({ state: 'visible' });
+      await this.emailInput.fill(email);
+
+      await this.password.fill(pass);
+     await this.loginBtn.click();
         await this.emailInput.fill(email);
         await this.password.click();
         await this.password.fill(pass);
