@@ -38,7 +38,8 @@ export class LoginPage {
 
     async loginForm(email: string, pass: string) {
         try {
-            await this.homeLoginBtn.waitFor({ state: 'visible' });
+            await this.homeLoginBtn.scrollIntoViewIfNeeded();
+            //await this.homeLoginBtn.waitFor({ state: 'visible' });
             await this.homeLoginBtn.click();
 
             await this.emailInput.waitFor({ state: 'visible' });
