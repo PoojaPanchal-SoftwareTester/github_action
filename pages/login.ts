@@ -27,6 +27,7 @@ export class LoginPage{
 
         await this.page.goto('/')
          //await this.page.pause();
+         console.error('Login failed - Login button not found. Current URL:', this.page.url());
     }
     
     async loginForm(email:string,pass:string) 
