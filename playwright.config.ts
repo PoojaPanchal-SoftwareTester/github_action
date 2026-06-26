@@ -1,7 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
 
-console.log('BASE_URL exists:', !!process.env.BASE_URL);
+console.log('BASE_URL:', process.env.BASE_URL ? 'Available' : 'Missing');
+console.log('USERNAME:', process.env.TEST_USERNAME ? 'Available' : 'Missing');
+console.log('PASSWORD:', process.env.TEST_PASSWORD ? 'Available' : 'Missing');
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv

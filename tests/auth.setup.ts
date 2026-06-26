@@ -14,10 +14,10 @@ const authFile = path.join(__dirname, '../.auth/user.json');
 setup('authenticate', async ({ page }) => {
 
       // ✅ If session exists — exit immediately, no login
-  if (fs.existsSync(authFile)) {
+  /*if (fs.existsSync(authFile)) {
     console.log('⚡ Session exists — skipping login');
     return;  // ← done in milliseconds
-  }
+  }*/
 
   const loginPage = new LoginPage(page);
       const homePage = new HomePage(page);

@@ -27,14 +27,14 @@ export class LoginPage{
 
         await this.page.goto('/')
          //await this.page.pause();
-         console.error('Login failed - Login button not found. Current URL:', this.page.url());
+        // console.error('Login failed - Login button not found. Current URL:', this.page.url());
     }
     
     async loginForm(email:string,pass:string) 
     {
         try{
-await this.homeLoginBtn.waitFor({ state: 'visible', timeout: 15000 });
-       //await this.homeLoginBtn.click();
+           //await this.homeLoginBtn.waitFor({ state: 'visible', timeout: 15000 });
+       await this.homeLoginBtn.click();
        await this.emailInput.click();
         await this.emailInput.fill(email);
         await this.password.click();
