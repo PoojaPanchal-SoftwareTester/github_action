@@ -9,7 +9,7 @@ import fs from 'fs';
 
 dotenv.config();
 
-//const authFile = path.join(__dirname, '../.auth/user.json');
+const authFile = path.join(__dirname, '../.auth/user.json');
 
 setup('authenticate', async ({ page }) => {
 
@@ -37,6 +37,6 @@ setup('authenticate', async ({ page }) => {
 
 
   // Step 5: Save the session state to file
-  //await page.context().storageState({ path: authFile });
- // console.log('✅ Auth state saved to', authFile);
+  await page.context().storageState({ path: authFile });
+  console.log('✅ Auth state saved to', authFile);
 });
