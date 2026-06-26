@@ -24,6 +24,7 @@ export class LoginPage{
 
     async open()
     {
+        
         await this.page.goto('/')
          //await this.page.pause();
     }
