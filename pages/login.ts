@@ -31,7 +31,8 @@ export class LoginPage{
     
     async loginForm(email:string,pass:string) 
     {
-         await this.homeLoginBtn.waitFor({ state: 'visible', timeout: 15000 });
+        try{
+await this.homeLoginBtn.waitFor({ state: 'visible', timeout: 15000 });
        //await this.homeLoginBtn.click();
        await this.emailInput.click();
         await this.emailInput.fill(email);
@@ -40,6 +41,12 @@ export class LoginPage{
         await this.loginBtn.click();
         
         return HomePage;
+        }
+        catch(error){
+console.error('Login failed - Login button not found. Current URL:', this.page.url());
+        throw error;
+        }
+         
         
     }
 
