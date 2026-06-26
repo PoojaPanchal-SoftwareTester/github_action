@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+
+console.log('BASE_URL exists:', !!process.env.BASE_URL);
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -14,6 +16,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
