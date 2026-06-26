@@ -13,7 +13,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.homeLoginBtn = page.locator("#login_Layer");
+        this.homeLoginBtn = page.getByRole('link', { name: 'Login', exact: true });
         this.emailInput = page.getByRole('textbox', { name: 'Enter your active Email ID /' });
         this.password = page.getByRole('textbox', { name: 'Enter your password' });
         this.loginBtn = page.getByRole('button', { name: 'Login', exact: true });
@@ -38,7 +38,10 @@ export class LoginPage {
 
     async loginForm(email: string, pass: string) {
         try {
-            await this.homeLoginBtn.scrollIntoViewIfNeeded();
+          await this.page.screenshot({
+  path: "test-results/before-login.png",
+  fullPage: true,
+});
             await this.homeLoginBtn.waitFor({ state: 'visible' });
             await this.homeLoginBtn.click();
 
