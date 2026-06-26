@@ -24,8 +24,9 @@ export class LoginPage{
 
     async open()
     {
-
-        await this.page.goto('/')
+  const baseUrl = process.env.BASE_URL || '/';
+        await this.page.goto(baseUrl);
+       // await this.page.goto('/')
          //await this.page.pause();
         // console.error('Login failed - Login button not found. Current URL:', this.page.url());
     }
