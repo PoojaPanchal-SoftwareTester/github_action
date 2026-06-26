@@ -23,13 +23,16 @@ export class LoginPage {
 
     async open() {
 
-        if(process.env.BASE_URL)
-        {
-           await this.page.goto(process.env.BASE_URL); 
-        }
-         else{
-          console.error('BaseUrl not found:', this.page.url());
-         }
+        
+    if (process.env.BASE_URL) {
+        await this.page.goto(process.env.BASE_URL, {
+            waitUntil: 'domcontentloaded', // ← critical for CI
+            timeout: 60000
+        });
+        console.log('✅ Navigated to:', this.page.url());
+    } else {
+        throw new Error('❌ BASE_URL is not set in environment');
+    }
         
     }
 

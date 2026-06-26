@@ -22,6 +22,11 @@ setup('authenticate', async ({ page }) => {
   const loginPage = new LoginPage(page);
       const homePage = new HomePage(page);
      await loginPage.open();
+     console.log('📍 Current URL after open():', page.url());
+
+
+    // ✅ Wait for page to be ready before interacting
+    await page.waitForLoadState('domcontentloaded');
 
   /*   const loginRequestPromise = page.waitForRequest(request =>
   request.method() === 'POST'
