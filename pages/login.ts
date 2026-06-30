@@ -13,7 +13,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.homeLoginBtn = page.getByRole('link', { name: 'Login', exact: true });
+        this.homeLoginBtn = page.locator("#login_Layer");
         this.emailInput = page.getByRole('textbox', { name: 'Enter your active Email ID /' });
         this.password = page.getByRole('textbox', { name: 'Enter your password' });
         this.loginBtn = page.getByRole('button', { name: 'Login', exact: true });
@@ -22,48 +22,42 @@ export class LoginPage {
     }
 
     async open() {
+        
+         if (process.env.BASE_URL) {
+     
+             await this.page.goto(process.env.BASE_URL, {
+                 waitUntil: 'domcontentloaded', // ← critical for CI
+                 timeout: 60000
+             });
+             console.log('✅ Navigated to:', this.page.url());
+         } else {
+             throw new Error('❌ BASE_URL is not set in environment');
+         }
 
-        
-    if (process.env.BASE_URL) {
-        await this.page.goto(process.env.BASE_URL, {
-            waitUntil: 'domcontentloaded', // ← critical for CI
-            timeout: 60000
-        });
-        console.log('✅ Navigated to:', this.page.url());
-    } else {
-        throw new Error('❌ BASE_URL is not set in environment');
-    }
-        
     }
 
     async loginForm(email: string, pass: string) {
-        try {
-          await this.page.screenshot({
-  path: "test-results/before-login.png",
-  fullPage: true,
-});
-            await this.homeLoginBtn.waitFor({ state: 'visible' });
-            await this.homeLoginBtn.click();
 
-            await this.emailInput.waitFor({ state: 'visible' });
-            await this.emailInput.click();
-            await this.emailInput.fill(email);
+        console.log(await this.homeLoginBtn.count());
+        // await this.homeLoginBtn.waitFor({ state: 'visible' });
+        await this.homeLoginBtn.click();
 
-            await this.password.waitFor({ state: 'visible' });
-            await this.password.click();
-            await this.password.fill(pass);
+        await this.emailInput.waitFor({ state: 'visible' });
+        await this.emailInput.click();
+        await this.emailInput.fill(email);
 
-            await this.loginBtn.waitFor({ state: 'visible' });
-            await this.loginBtn.click();
+        await this.password.waitFor({ state: 'visible' });
+        await this.password.click();
+        await this.password.fill(pass);
 
-            return HomePage;
-        }
-        catch (error) {
-            console.error('Login failed - Login button not found. Current URL:', this.page.url());
-            throw error;
-        }
+        await this.loginBtn.waitFor({ state: 'visible' });
+        await this.loginBtn.click();
 
+        return HomePage;
 
     }
 
+
+
 }
+

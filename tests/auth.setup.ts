@@ -1,5 +1,5 @@
-import { test as setup, expect } from "@playwright/test";
-import { LoginPage } from "../pages/login";
+import { test as setup } from "../fixtures/loginFixture.ts";
+import { expect } from "@playwright/test";
 import playwrightConfig from "../playwright.config";
 import { HomePage } from "../pages/homePage";
 
@@ -11,17 +11,16 @@ dotenv.config();
 
 const authFile = path.join(__dirname, '../.auth/user.json');
 
-setup('authenticate', async ({ page }) => {
+setup('authenticate', async ({ loggedInPage,page }) => {
 
   // ✅ If session exists — exit immediately, no login
-  /*if (fs.existsSync(authFile)) {
+/*  if (fs.existsSync(authFile)) {
     console.log('⚡ Session exists — skipping login');
     return;  // ← done in milliseconds
   }*/
 
-  const loginPage = new LoginPage(page);
   const homePage = new HomePage(page);
-  await loginPage.open();
+  //await loggedInPage.open();
   console.log('📍 Current URL after open():', page.url());
 
 
@@ -29,7 +28,7 @@ setup('authenticate', async ({ page }) => {
   await page.waitForLoadState('domcontentloaded');
 
 
-  await loginPage.loginForm(process.env.TEST_USERNAME!, process.env.TEST_PASSWORD!);
+ // await loggedInPage.loginForm(process.env.TEST_USERNAME!, process.env.TEST_PASSWORD!);
 
  
   await page.waitForURL('/mnjuser/homepage');

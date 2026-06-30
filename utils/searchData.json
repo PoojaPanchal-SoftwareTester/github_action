@@ -4,5 +4,11 @@
         "playwright",
         "Manual Testing",
         "Automation Testing"
+    ],
+    "locations":[
+      "Indore",
+      "Pune",
+      "Mumbai",
+      "Banglore"
     ]
 }

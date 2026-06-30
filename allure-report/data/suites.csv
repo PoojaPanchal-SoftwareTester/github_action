@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","0","Login API","chromium","2026-06-28","skipped","2026-06-28","","API\loginApi.spec.ts","",""
+"","7153","authenticate","setup","2026-06-28","failed","2026-06-28","","auth.setup.ts","",""
+"","1","Checking login","chromium","2026-06-28","skipped","2026-06-28","","somke.spec.ts","",""

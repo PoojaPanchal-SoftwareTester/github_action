@@ -1,0 +1,5 @@
+✅ Navigated to: https://www.naukri.com/
+0
+📍 Current URL after open(): https://www.naukri.com/
+✅ Auth state saved to C:\Projects\Indeed\.auth\user.json
+Test Finished
